@@ -1,6 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable, RecordWildCards #-}
 module Abstract.Interfaces.Counter (
  Counter (..),
+ CounterError (..),
  incr,
  incrBy,
  decr,
