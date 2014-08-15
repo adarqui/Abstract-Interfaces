@@ -1,0 +1,35 @@
+name:                   Abstract-Interfaces
+version:                0.0.1
+stability:              provisional
+license:                BSD3
+license-file:           LICENSE
+
+cabal-version:          >= 1.8
+build-type:             Simple
+
+author:                 Andrew Darqui <andrew.darqui@gmail.com>
+maintainer:             Andrew Darqui <andrew.darqui@gmail.com>
+homepage:               github.com/adarqui/Abstract-Interfaces
+
+category:               Experimental
+synopsis:               Abstract
+
+Library
+ hs-source-dirs:        src
+ exposed-modules:
+                        Abstract.Interfaces.Lock
+
+                        Abstract.Interfaces.Counter
+                        Abstract.Interfaces.Counter.Inc
+                        Abstract.Interfaces.Counter.Dec
+
+                        Abstract.Interfaces.Queue
+                        Abstract.Interfaces.Queue.Enq
+                        Abstract.Interfaces.Queue.Deq
+
+                        Abstract.Interfaces.Stack
+                        Abstract.Interfaces.Stack.Push
+                        Abstract.Interfaces.Stack.Pop
+
+ build-depends:         base >= 3 && <5
+ ghc-options:           -Wall -rtsopts
