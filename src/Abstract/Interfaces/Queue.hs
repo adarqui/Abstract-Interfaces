@@ -1,6 +1,7 @@
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveDataTypeable, RecordWildCards #-}
 module Abstract.Interfaces.Queue (
  Queue (..),
+ QueueError (..),
  enqueue,
  enqueueBatch,
  dequeue,
@@ -8,6 +9,19 @@ module Abstract.Interfaces.Queue (
  size,
  destroy
 ) where
+
+
+import Control.Exception
+import Data.Typeable
+
+data QueueError =
+   CreateFailed
+ | DestroyFailed
+ | OperationFailed
+ | Disassociated
+ deriving (Show, Typeable)
+
+instance Exception QueueError
 
 
 data Queue m a t = Queue {

@@ -18,16 +18,12 @@ import Data.Typeable
 data StackError =
    CreateFailed
  | DestroyFailed
- | EmptyStack
  | OperationFailed
- | PushFailed
- | PopFailed
  | Disassociated
- | NotImplemented
  deriving (Show, Typeable)
 
-
 instance Exception StackError
+
 
 data Stack m a t = Stack {
  _s :: a,
