@@ -22,6 +22,7 @@ Library
                         Abstract.Interfaces.Counter
                         Abstract.Interfaces.Counter.Inc
                         Abstract.Interfaces.Counter.Dec
+                        Abstract.Interfaces.Counter.Get
 
                         Abstract.Interfaces.Queue
                         Abstract.Interfaces.Queue.Enq

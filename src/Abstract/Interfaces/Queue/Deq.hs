@@ -2,7 +2,8 @@
 module Abstract.Interfaces.Queue.Deq (
  QueueDeq (..),
  dequeue,
- drain
+ drain,
+ queueToDeq
 ) where
 
 
@@ -12,6 +13,10 @@ import qualified Abstract.Interfaces.Queue as Q
 data QueueDeq m a t = QueueDeq {
  _qDeq :: Q.Queue m a t
 }
+
+
+queueToDeq :: Q.Queue m a t -> QueueDeq m a t
+queueToDeq q = QueueDeq { _qDeq = q }
 
 
 dequeue :: (Monad m) => forall t. QueueDeq m a t -> m (Maybe t)

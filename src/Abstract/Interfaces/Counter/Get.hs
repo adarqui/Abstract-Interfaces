@@ -1,10 +1,11 @@
-module Abstract.Records.Counter.Get (
+{-# LANGUAGE RankNTypes #-}
+module Abstract.Interfaces.Counter.Get (
  CounterG,
  get,
  counterToGet
 ) where
 
-import qualified Abstract.Records.Counter as C
+import qualified Abstract.Interfaces.Counter as C
 
 data CounterG m a t = CounterG {
  _cG :: C.Counter m a t
@@ -12,7 +13,8 @@ data CounterG m a t = CounterG {
 
 
 counterToGet :: C.Counter m a t -> CounterG m a t
-counterToGet c = CounterD { _cG = c }
+counterToGet c = CounterG { _cG = c }
 
 
+get :: (Monad m) => forall t. CounterG m a t -> m (Maybe t)
 get (CounterG c') = C.get c'
