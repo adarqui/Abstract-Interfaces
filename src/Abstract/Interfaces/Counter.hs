@@ -1,4 +1,4 @@
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveDataTypeable, RecordWildCards #-}
 module Abstract.Interfaces.Counter (
  Counter (..),
  incr,
@@ -9,6 +9,19 @@ module Abstract.Interfaces.Counter (
  reset,
  gentleReset
 ) where
+
+
+import Control.Exception
+import Data.Typeable
+
+data CounterError =
+   CreateFailed
+ | DestroyFailed
+ | OperationFailed
+ | Disassociated
+ deriving (Show, Typeable)
+
+instance Exception CounterError
 
 
 data Counter m a t = Counter {
