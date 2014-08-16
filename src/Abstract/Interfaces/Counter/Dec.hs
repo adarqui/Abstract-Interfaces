@@ -1,6 +1,6 @@
 {-# LANGUAGE RankNTypes #-}
 module Abstract.Interfaces.Counter.Dec (
- CounterD,
+ CounterDec,
  decr,
  decrBy,
  counterToDec
@@ -10,18 +10,18 @@ module Abstract.Interfaces.Counter.Dec (
 import qualified Abstract.Interfaces.Counter as C
 
 
-data CounterD m a t = CounterD {
+data CounterDec m a t = CounterDec {
  _cD :: C.Counter m a t
 }
 
 
-counterToDec :: C.Counter m a t -> CounterD m a t
-counterToDec c = CounterD { _cD = c }
+counterToDec :: C.Counter m a t -> CounterDec m a t
+counterToDec c = CounterDec { _cD = c }
 
 
-decr :: (Monad m) => forall t. CounterD m a t -> m t
-decr (CounterD c') = C.decr c'
+decr :: (Monad m) => forall t. CounterDec m a t -> m t
+decr (CounterDec c') = C.decr c'
 
 
-decrBy :: (Monad m) => forall t. CounterD m a t -> t -> m t
-decrBy (CounterD c') = C.decrBy c'
+decrBy :: (Monad m) => forall t. CounterDec m a t -> t -> m t
+decrBy (CounterDec c') = C.decrBy c'
