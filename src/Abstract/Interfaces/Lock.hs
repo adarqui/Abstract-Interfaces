@@ -1,7 +1,7 @@
 {-# LANGUAGE RankNTypes, RecordWildCards #-}
 
 module Abstract.Interfaces.Lock (
- Lock (..),
+ Lock,
  acquire,
  tryAcquire,
  release,

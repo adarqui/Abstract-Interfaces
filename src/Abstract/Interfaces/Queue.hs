@@ -1,6 +1,6 @@
 {-# LANGUAGE DeriveDataTypeable, RecordWildCards #-}
 module Abstract.Interfaces.Queue (
- Queue (..),
+ Queue,
  QueueError (..),
  enqueue,
  enqueueBatch,

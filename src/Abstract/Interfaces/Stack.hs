@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable, RecordWildCards #-}
 
 module Abstract.Interfaces.Stack (
- Stack (..),
+ Stack,
  StackError (..),
  push,
  pushBatch,
