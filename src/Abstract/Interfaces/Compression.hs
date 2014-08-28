@@ -1,9 +1,5 @@
 module Abstract.Interfaces.Compression (
- Compression (..),
- compress,
- compressFile,
- decompress,
- decompressFile
+ Compression (..)
 ) where
 
 class Compression a where
