@@ -27,7 +27,6 @@ instance Exception CounterError
 
 data Counter m a t = Counter {
  _c :: a,
- _cname :: String,
  _incr :: a -> m t,
  _incrBy :: a -> t -> m t,
  _decr :: a -> m t,
