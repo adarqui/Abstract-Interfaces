@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable, RecordWildCards #-}
 module Abstract.Interfaces.Counter (
  Counter (..),
- CounterError (..),
+ CounterError (..) {-,
  incr,
  incrBy,
  decr,
@@ -9,6 +9,7 @@ module Abstract.Interfaces.Counter (
  get,
  reset,
  gentleReset
+-}
 ) where
 
 
@@ -24,19 +25,17 @@ data CounterError =
 
 instance Exception CounterError
 
-
-data Counter m a t = Counter {
- _c :: a,
- _incr :: a -> m t,
- _incrBy :: a -> t -> m t,
- _decr :: a -> m t,
- _decrBy :: a -> t -> m t,
- _get :: a -> m (Maybe t),
- _reset :: a -> m (),
- _gentleReset :: a -> m ()
+data Counter m t = Counter {
+ _incr :: m t,
+ _incrBy :: t -> m t,
+ _decr :: m t,
+ _decrBy :: t -> m t,
+ _get :: m (Maybe t),
+ _reset :: m (),
+ _gentleReset :: m ()
 }
 
-
+{-
 incr :: (Monad m) => Counter m a t -> m t
 incr Counter {..} = _incr _c
 
@@ -63,3 +62,4 @@ reset Counter {..} = _reset _c
 
 gentleReset :: (Monad m) => Counter m a t -> m ()
 gentleReset Counter {..} = _gentleReset _c
+-}
