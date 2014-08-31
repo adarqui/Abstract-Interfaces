@@ -24,37 +24,36 @@ data QueueError =
 instance Exception QueueError
 
 
-data Queue m a t = Queue {
- _q :: a,
- _qname :: String,
- _enqueue :: a -> t -> m (),
- _enqueueBatch :: a -> [t] -> m (),
- _dequeue :: a -> m (Maybe t),
- _drain :: a -> m [t],
- _size :: a -> m Int,
- _destroy :: a -> m ()
+data Queue m t = Queue {
+name :: String,
+ _enqueue :: t -> m (),
+ _enqueueBatch :: [t] -> m (),
+ _dequeue :: m (Maybe t),
+ _drain :: m [t],
+ _size :: m Int,
+ _destroy :: m ()
 }
 
 
-enqueue :: (Monad m) => Queue m a t -> t -> m ()
-enqueue Queue {..} t = _enqueue _q t
+enqueue :: (Monad m) => Queue m t -> t -> m ()
+enqueue Queue {..} t = _enqueue t
 
 
-enqueueBatch :: (Monad m) => Queue m a t -> [t] -> m ()
-enqueueBatch Queue {..} ts = _enqueueBatch _q ts
+enqueueBatch :: (Monad m) => Queue m t -> [t] -> m ()
+enqueueBatch Queue {..} ts = _enqueueBatch ts
 
 
-dequeue :: (Monad m) => Queue m a t -> m (Maybe t)
-dequeue Queue {..} = _dequeue _q
+dequeue :: (Monad m) => Queue m t -> m (Maybe t)
+dequeue Queue {..} = _dequeue
 
 
-drain :: (Monad m) => Queue m a t -> m [t]
-drain Queue {..} = _drain _q
+drain :: (Monad m) => Queue m t -> m [t]
+drain Queue {..} = _drain
 
 
-size :: (Monad m) => Queue m a t -> m Int
-size Queue {..} = _size _q
+size :: (Monad m) => Queue m t -> m Int
+size Queue {..} = _size
 
 
-destroy :: (Monad m) => Queue m a t -> m ()
-destroy Queue {..} = _destroy _q
+destroy :: (Monad m) => Queue m t -> m ()
+destroy Queue {..} = _destroy

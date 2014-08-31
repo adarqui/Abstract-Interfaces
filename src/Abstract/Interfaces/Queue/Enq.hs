@@ -10,17 +10,17 @@ module Abstract.Interfaces.Queue.Enq (
 import qualified Abstract.Interfaces.Queue as Q
 
 
-data QueueEnq m a t = QueueEnq {
- _qEnq :: Q.Queue m a t
+data QueueEnq m t = QueueEnq {
+ _qEnq :: Q.Queue m t
 }
 
 
-queueToEnq :: Q.Queue m a t -> QueueEnq m a t
+queueToEnq :: Q.Queue m t -> QueueEnq m t
 queueToEnq q = QueueEnq { _qEnq = q }
 
 
-enqueue :: (Monad m) => forall t. QueueEnq m a t -> t -> m ()
+enqueue :: (Monad m) => forall t. QueueEnq m t -> t -> m ()
 enqueue (QueueEnq q') = Q.enqueue q'
 
-enqueueBatch :: (Monad m) => forall t. QueueEnq m a t -> [t] -> m ()
+enqueueBatch :: (Monad m) => forall t. QueueEnq m t -> [t] -> m ()
 enqueueBatch (QueueEnq q') = Q.enqueueBatch q'

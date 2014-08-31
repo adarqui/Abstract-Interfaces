@@ -10,18 +10,18 @@ module Abstract.Interfaces.Stack.Pop (
 import qualified Abstract.Interfaces.Stack as S
 
 
-data StackPop m a t = StackPop {
- _sPop :: S.Stack m a t
+data StackPop m t = StackPop {
+ _sPop :: S.Stack m t
 }
 
 
-stackToPop :: S.Stack m a t -> StackPop m a t
+stackToPop :: S.Stack m t -> StackPop m t
 stackToPop s = StackPop { _sPop = s }
 
 
-pop :: (Monad m) => forall t. StackPop m a t -> m (Maybe t)
+pop :: (Monad m) => forall t. StackPop m t -> m (Maybe t)
 pop (StackPop s') = S.pop s'
 
 
-drain :: (Monad m) => forall t. StackPop m a t -> m [t]
+drain :: (Monad m) => forall t. StackPop m t -> m [t]
 drain (StackPop s') = S.drain s'
