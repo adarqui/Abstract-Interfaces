@@ -17,6 +17,8 @@ synopsis:               Abstract
 Library
  hs-source-dirs:        src
  exposed-modules:
+                        Abstract.Interfaces.Wrapper
+
                         Abstract.Interfaces.Lock
 
                         Abstract.Interfaces.Counter
