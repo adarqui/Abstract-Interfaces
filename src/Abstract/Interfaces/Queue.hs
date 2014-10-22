@@ -5,6 +5,7 @@ module Abstract.Interfaces.Queue (
  enqueue,
  enqueueBatch,
  dequeue,
+ blDequeue,
  drain,
  size,
  destroy
