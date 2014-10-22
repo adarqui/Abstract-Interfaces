@@ -29,6 +29,7 @@ name :: String,
  _enqueue :: t -> m (),
  _enqueueBatch :: [t] -> m (),
  _dequeue :: m (Maybe t),
+ _blDequeue :: m (Maybe t),
  _drain :: m [t],
  _size :: m Int,
  _destroy :: m ()
@@ -45,6 +46,10 @@ enqueueBatch Queue {..} ts = _enqueueBatch ts
 
 dequeue :: (Monad m) => Queue m t -> m (Maybe t)
 dequeue Queue {..} = _dequeue
+
+
+blDequeue :: (Monad m) => Queue m t -> m (Maybe t)
+blDequeue Queue {..} = _blDequeue
 
 
 drain :: (Monad m) => Queue m t -> m [t]
